@@ -9,3 +9,28 @@ Verifique se está funcionando:
 ## Se for, por exemplo, llama3, rode:
 
 * ollama pull llama3
+
+## Clonar o repositório do projeto (Direto no vscode)
+
+https://github.com/profcintiapinho/iacomllmrag.git
+
+## Criar e ativar um ambiente virtual Python no terminal(prompt), não esqueça que precisar estar na pasta onde fez o clone
+
+* python -m venv venv
+
+* venv/bin/activate   
+
+* venv\Scripts\activate
+
+## Instalar as dependências
+
+* pip install -r requirements.txt
+
+<img width="639" height="445" alt="image" src="https://github.com/user-attachments/assets/61e153f8-72d6-4a96-a28e-5f0567292d4c" />
+
+## Configurar o banco de dados / embeddings
+
+python setup_database.py
+
+
+
