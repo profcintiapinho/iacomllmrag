@@ -1,4 +1,5 @@
 # Para testar esse projeto em sua máquina
+### Esse projeto já foi testado com python versões: 3.11 e 3.13, no 3.14 ele não roda por conta da versão do chroma que não foi compatível
 
 ## Baixe e instale de acordo com seu sistema (Windows, Linux ou Mac).
 
@@ -31,6 +32,27 @@ https://github.com/profcintiapinho/iacomllmrag.git
 ## Configurar o banco de dados / embeddings
 
 python setup_database.py
+
+Sempre que você trocar os documentos de consulta, precisa executar esses códigos novamente:
+
+<img width="962" height="520" alt="image" src="https://github.com/user-attachments/assets/b6631cee-8531-4c28-a820-6be9287bae12" />
+
+## Entenda a estrutura de pastas
+
+models/ → cuidam da parte de dados, por exemplo, como carregar documentos e transformar em embeddings.
+
+controllers/ → fazem a “ponte” entre os dados (models) e a apresentação (views), definindo a lógica de uso do RAG (retrieval-augmented generation).
+
+views/ → cuidam da interface com quem usa (seja uma API Flask, um retorno em terminal, etc.).
+
+db/ → guarda o banco vetorial (ChromaDB) que armazena os embeddings e documentos processados.
+
+documents/ → são os arquivos originais que você consulta.
+
+run.py → ponto de entrada, é quem inicia tudo.
+
+setup_database.py → prepara os dados antes de rodar o sistema.
+
 
 
 
