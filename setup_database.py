@@ -5,7 +5,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 import shutil
 
-# Pasta onde os documentos estão localizados
+# Pasta dos documentos estão localizados 
 DOC_DIR = "documents"
 
 # Caminho onde o banco de dados vetorial será armazenado
