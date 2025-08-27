@@ -33,5 +33,10 @@ https://github.com/profcintiapinho/iacomllmrag.git
 
 python setup_database.py
 
+Sempre que você trocar os documentos de consulta, precisa executar esses códigos novamente:
+
+<img width="962" height="520" alt="image" src="https://github.com/user-attachments/assets/b6631cee-8531-4c28-a820-6be9287bae12" />
+
+
 
 
