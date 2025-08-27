@@ -1,4 +1,5 @@
 # Para testar esse projeto em sua máquina
+### Esse projeto já foi testado com python versões: 3.11 e 3.13, no 3.14 ele não roda por conta da versão do chroma que não foi compatível
 
 ## Baixe e instale de acordo com seu sistema (Windows, Linux ou Mac).
 
