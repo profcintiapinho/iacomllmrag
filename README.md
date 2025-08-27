@@ -37,6 +37,39 @@ Sempre que você trocar os documentos de consulta, precisa executar esses códig
 
 <img width="962" height="520" alt="image" src="https://github.com/user-attachments/assets/b6631cee-8531-4c28-a820-6be9287bae12" />
 
+## Entenda a estrutura de pastas
+
+IACOMLLMRAG/
+│
+├── app/                     → pasta principal da aplicação
+│   ├── __pycache__/          → arquivos compilados automaticamente pelo Python
+│   │   └── __init__.cpython-313.pyc
+│   ├── controllers/          → camada de controle (regras de execução e lógica)
+│   │   ├── __pycache__/
+│   │   └── rag_controller.py → controla a lógica do RAG (faz ligação entre modelo, dados e views)
+│   ├── models/               → camada de dados/modelos
+│   │   ├── __pycache__/
+│   │   └── rag_model.py      → define como os dados/documentos são tratados e usados pelo RAG
+│   └── views/                → camada de apresentação (retorno ao usuário, interface API ou CLI)
+│       ├── __init__.py       → indica que a pasta é um módulo Python
+│       └── __init__.py       → (parece duplicado, mas serve para inicializar pacote)
+│
+├── db/                       → banco de dados vetorial do ChromaDB
+│   ├── e4495eaa-b2d8...      → pasta interna criada pelo ChromaDB com metadados
+│   └── chroma.sqlite3        → banco SQLite onde ficam embeddings/documentos indexados
+│
+├── documents/                → documentos de referência para o RAG
+│   ├── arquivosquedevemserconsultados.pdf → fonte de conhecimento em PDF
+│   └── problemas.csv         → dados estruturados (ex.: perguntas/respostas ou base de teste)
+│
+├── venv/                     → ambiente virtual Python (dependências instaladas só aqui)
+│
+├── .gitignore                → lista de arquivos/pastas ignorados pelo Git (ex.: venv, pycache, db local)
+├── README.md                 → instruções principais do projeto (como rodar, dependências, etc.)
+├── requirements.txt          → dependências necessárias (bibliotecas Python com versão)
+├── run.py                    → script principal que inicia a aplicação (carrega modelos e roda)
+└── setup_database.py         → script que prepara o banco/ChromaDB (gera embeddings e popula o db)
+
 
 
 
