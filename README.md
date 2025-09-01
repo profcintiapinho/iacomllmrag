@@ -73,5 +73,13 @@ Resposta
 <img width="1456" height="555" alt="image" src="https://github.com/user-attachments/assets/1ff0a609-21f7-431e-ab8f-25fffd8cf77f" />
 
 
+# Agora incluindo o Front:
+
+Para rodar mudou um pouco a forma de abrir:
+
+* http://127.0.0.1:5000/swagger - para abrir a api
+* http://127.0.0.1:5000/frontend - para abrir o front
+
+
 
 
