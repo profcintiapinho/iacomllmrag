@@ -75,7 +75,7 @@ Resposta
 
 # Agora incluindo o Front:
 
-Para rodar mudou um pouco a forma de abrir:
+Após rodar o python run.py, após rodar mudou um pouco a forma de abrir:
 
 * http://127.0.0.1:5000/swagger - para abrir a api
 * http://127.0.0.1:5000/frontend - para abrir o front
