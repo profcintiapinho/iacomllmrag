@@ -6,46 +6,42 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 class RAGModel:
-    def __init__(self, db_path, embedding_function):
-        # Cria a conexão com o banco de dados vetorial
+    def __init__(self, db_path, embedding_function, max_chunks=5, max_context_chars=3000):
         self.vectorstore = Chroma(
             persist_directory=db_path,
             embedding_function=embedding_function
         )
         self.retriever = self.vectorstore.as_retriever()
-        
-        # Define o modelo de linguagem (LLM) que será usado para gerar a resposta
         self.llm = Ollama(model="llama3")
+        self.max_chunks = max_chunks
+        self.max_context_chars = max_context_chars
 
     def get_rag_response(self, question):
-        # 1. Recupera os documentos relevantes (contexto)
-        retrieved_docs = self.retriever.get_relevant_documents(question)
+        # Recupera os chunks mais relevantes
+        retrieved_docs = self.retriever.get_relevant_documents(question)[:self.max_chunks]
+
+        # Monta o contexto concatenando chunks
         context = "\n\n".join([doc.page_content for doc in retrieved_docs])
-        
-        # 2. Cria o prompt aprimorado
-        # Instruímos o modelo a usar apenas o contexto fornecido e a ser direto
+        if len(context) > self.max_context_chars:
+            context = context[:self.max_context_chars] + "\n\n... [texto truncado]"
+
+        # Prompt instrui o LLM a usar documentos primeiro, mas fallback se necessário
         template = """
-        Você é um assistente de IA. Responda a pergunta do usuário com base **exclusivamente** no seguinte contexto.
-        Se a resposta não estiver no contexto, diga "Não encontrei essa informação nos documentos.".
-        
-        Contexto:
-        {context}
-        
-        Pergunta:
-        {question}
-        
-        Resposta:
-        """
-        
+Você é um assistente de IA. Responda a pergunta do usuário **preferencialmente** com base no contexto abaixo.
+Use o conhecimento próprio apenas se a informação não estiver nos documentos.
+
+Contexto:
+{context}
+
+Pergunta:
+{question}
+
+Resposta:
+"""
+
         prompt = ChatPromptTemplate.from_template(template)
         output_parser = StrOutputParser()
-        
-        # 3. Cria a cadeia de processamento (Chain)
         chain = prompt | self.llm | output_parser
-        
-        # 4. Verifica se o contexto está vazio para evitar respostas genéricas
-        if not context.strip():
-            return "Não encontrei informações relevantes para sua pergunta nos documentos."
-            
-        # 5. Executa a cadeia e retorna a resposta
+
+        # Executa a cadeia
         return chain.invoke({"context": context, "question": question})
