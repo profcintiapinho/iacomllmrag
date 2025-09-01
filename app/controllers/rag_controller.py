@@ -1,30 +1,29 @@
 import os
-from flask import Blueprint, request
+from flask import request
 from flask_restx import Namespace, Resource, fields
-from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+
+# Importa config centralizada
+from app.config import get_embedding_function
 from app.models.rag_model import RAGModel
 
-# Configurações do RAG
+# Caminhos
 DOC_DIR = "documents"
 DB_DIR = "db"
 
 # Cria um namespace para a API
 api = Namespace('rag', description='API para consultas RAG')
 
-# Modelo de entrada para a API
+# Modelo de entrada da API
 rag_question = api.model('Question', {
     'question': fields.String(required=True, description='A pergunta para o sistema RAG.')
 })
 
-# Cria o modelo de embeddings
-model_name = "BAAI/bge-small-en"
-embedding_function = HuggingFaceBgeEmbeddings(
-    model_name=model_name,
-    encode_kwargs={'normalize_embeddings': True}
-)
+# Cria embeddings a partir do config centralizado
+embedding_function = get_embedding_function()
 
 # Instancia o modelo RAG
 rag_model = RAGModel(db_path=DB_DIR, embedding_function=embedding_function)
+
 
 @api.route('/ask')
 class RAGAsk(Resource):

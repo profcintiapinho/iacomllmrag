@@ -1,0 +1,16 @@
+Uma apólice de seguro é um contrato legal entre um segurado e uma seguradora que formaliza a aceitação de um risco, detalhando todas as condições e coberturas do seguro. Este documento especifica quem são as partes envolvidas, o valor do prémio pago pelo segurado, a vigência do contrato, os tipos de cobertura e os benefícios, bem como as exclusões e as franquias aplicáveis em caso de sinistro. 
+Informações que constam na apólice de seguro:
+Dados do segurado e da seguradora: Informações que identificam as partes do contrato. 
+Coberturas e garantias: Descrição dos riscos cobertos pelo seguro. 
+Valores segurados: Os limites financeiros do seguro para cada cobertura. 
+Prémio: O valor que o segurado paga à seguradora. 
+Vigência do contrato: O período durante o qual o seguro está ativo. 
+Cláusulas: Condições especiais e gerais que regem o contrato, incluindo exclusões (o que não é coberto). 
+Franquias: A parte do dano que o segurado deve pagar para acionar o seguro. 
+Documentação: Os documentos necessários para solicitar a cobertura. 
+Para que serve a apólice:
+Formaliza o contrato: É a garantia legal do acordo entre segurado e seguradora. 
+Serve como guia: Contém todas as regras, direitos e deveres para o segurado e a seguradora. 
+Protege contra perdas: Assegura a proteção financeira contra eventos específicos, como acidentes ou danos. 
+Especifica as condições de acionamento: Detalha como e quando o seguro pode ser acionado. 
+
